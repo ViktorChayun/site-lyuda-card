@@ -1,0 +1,23 @@
+[project]
+name = "site-lyuda-card"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "vchayun@gmail.com"}
+]
+license = {text = "None"}
+readme = "README.md"
+requires-python = "3.11.4"
+dependencies = [
+    "django (>=5.2.3,<6.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "django-environ (>=0.12.0,<0.13.0)",
+    "whitenoise (>=6.9.0,<7.0.0)",
+    "gunicorn (>=23.0.0,<24.0.0)",
+    "environ (>=1.0,<2.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
