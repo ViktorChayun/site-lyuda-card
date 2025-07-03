@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app_main.context_processors.contact_info'
             ],
         },
     },
@@ -131,3 +132,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PHONE = env('CONTACT_PHONE')
+EMAIL = env('CONTACT_EMAIL')
+TELEGRAM_USERNAME = env('CONTACT_TELEGRAM')
+VIBER_PHONE = env('CONTACT_VIBER')

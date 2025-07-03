@@ -1,0 +1,131 @@
+:root {
+  --main-blue: #5CB8FF;
+  --dark-blue: #003366;
+  --light-blue: #e6f3ff;
+}
+
+body {
+  background-color: var(--light-blue);
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+nav.navbar {
+  background-color: var(--dark-blue);
+}
+
+.navbar-brand, .nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: var(--main-blue) !important;
+}
+
+footer img {
+  filter: grayscale(100%);
+  transition: all 0.2s ease-in-out;
+}
+
+footer img:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+
+.social-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+.telegram-icon {
+  filter: invert(42%) sepia(72%) saturate(3666%) hue-rotate(180deg) brightness(92%) contrast(98%);
+}
+
+.viber-icon {
+  filter: invert(23%) sepia(91%) saturate(1522%) hue-rotate(247deg) brightness(96%) contrast(104%);
+}
+
+.services h2 {
+  color: var(--dark-blue);
+  margin-bottom: 30px;
+}
+
+.services ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.services ul li::before {
+  content: "✦ ";
+  color: var(--accent-blue);
+}
+
+.hero-section {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-section img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0, 51, 102, 0.2);
+}
+
+/* Додаткові стилі - home*/
+.section-home {
+  margin-top: 0;
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+
+.section-home .lead {
+  margin-bottom: 0;
+}
+
+.section-home .photo{
+  width: 60%;
+  max-width: 550px;
+  height: auto;
+}
+
+/* Додаткові стилі - about*/
+.section-about .photo {
+  max-width: 100%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.section-about .card-custom {
+  background-color: #ffffff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.section-about .card-body p {
+  text-align: justify;
+  line-height: 1.5;
+}
+
+
+/* Додаткові стилі - FAQ  */
+.section-faq .alert {
+  font-size: 1.25rem;
+}
+
+.section-services .card-body div {
+  font-size: 2.2rem;
+}
+
+.btn-session {
+  padding: 0.6rem 1.5rem;
+}

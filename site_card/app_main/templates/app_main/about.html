@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="py-5">
+<section class="section-about py-5">
 
   <div class="container">
     <div class="row align-items-start justify-content-center">
@@ -11,16 +11,15 @@
       <div class="col-lg-4 col-md-5 text-center mb-4 mb-lg-0 align-self-start">
         <img src="{% static 'images/my-photo.jpg' %}"
               alt="Чаюн Людмила"
-              class="img-fluid rounded shadow-lg"
-              style="max-width: 100%; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
+              class="img-fluid rounded shadow-lg photo">
       </div>
 
       <!-- Права колонка з історією -->
       <div class="col-lg-8 col-md-12">
-        <div class="card shadow-lg border-0 p-4" style="background-color: #ffffff; box-shadow: 0 0 40px rgba(0,0,0,0.5);">
+        <div class="card shadow-lg border-0 p-4 card-custom">
           <div class="card-body">
             <h2 class="card-title text-center text-primary mb-4">Моя історія</h2>
-            <div class="fs-5" style="text-align: justify; line-height: 1.75;">
+            <div class="fs-5">
               <p>Мій шлях від першого захоплення психологією і до першого клієнта тривав 20 років. Чому так довго? Мабуть, тому, що все має ставати на свої місця в свій чітко визначений час — по нашій готовності!</p>
                 <p>Мій особистий досвід допомоги собі та іншим триває вже 23 роки. Почалося все в 12, коли я хотіла краще зрозуміти себе і людей навколо. Чому вони такі, чому поводяться певним чином, і як із цим жити?</p>
                 <p>Головною мотивацією була допомога собі — в комплексах, страхах, невпевненості, болю. Я знайшла відповіді, і змогла впоратись із усім, що мене тоді турбувало. І це стало основою мого шляху.</p>
@@ -33,7 +32,15 @@
                 <p>Гіпноз — це не магія. Це не про навіювання, а про доступ до глибинних шарів психіки. Для тих, кому слово "гіпноз" звучить страшно — завжди є альтернативи: медитація, розмова, м’які практики. Я — за індивідуальний підхід до кожного.</p>
                 <p>Мій метод — для тих, хто хоче познайомитися з собою, пропрацювати травми, розширити себе і змінити життя. Якщо ви один з таких — я з радістю буду вашим провідником у цій подорожі.</p>  
             </div>
+
+            <div class="container text-center">
+            <img src="{% static 'images/certificate.jpg' %}" 
+                alt="Сертифікат" 
+                class="img-fluid rounded shadow" 
+                style="max-width: 600px;">
           </div>
+
+        </div>
         </div>
       </div>
       
@@ -43,6 +50,7 @@
           Записатися на сесію
         </a>
       </div>
+
     </div>
   </div>
 </section>
