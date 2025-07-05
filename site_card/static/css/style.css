@@ -2,6 +2,7 @@
   --main-blue: #5CB8FF;
   --dark-blue: #003366;
   --light-blue: #e6f3ff;
+  --footer-blue: #d4eaff;
 }
 
 body {
@@ -128,4 +129,15 @@ footer img:hover {
 
 .btn-session {
   padding: 0.6rem 1.5rem;
+}
+
+
+footer {
+  background-color: var(--footer-blue) !important;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+
+  padding: 10px 0;
+  color: #fff;
 }

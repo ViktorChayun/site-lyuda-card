@@ -25,6 +25,7 @@ poetry add django-environ
 poetry add whitenoise
 poetry add gunicorn
 poetry add environ
+poetry add geoip2
 ```
 
 4. потрібно створити `.env` файл в середині `site` папці
@@ -83,6 +84,17 @@ python manage.py runserver
 cd docs
 make html
 ```
+
+. як згенерувати requirements.txt?
+    pip freeze > requirements.txt
+    poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+. як встановити модулі із requirements.txt?
+    pip freeze > requirements.txt
+    poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+. як перевірити встановлені модулі?
+    pip freeze > installed_packages.txt
 ---------------------
 ## Links
 * Шлях до застосутнку
@@ -96,3 +108,6 @@ make html
 # User
 viktor
 123456
+
+
+https://github.com/P3TERX/GeoLite.mmdb

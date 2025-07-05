@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import environ
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +26,18 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'hypno-consult.com.ua',  # основний домен
+    'www.hypno-consult.com.ua',  # якщо використовується з www
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'app_main.middlewares.VisitorLoggingMiddleware',  # прослойка для трекінгу користувачів, збір інфи про них
 ]
 
 ROOT_URLCONF = 'site_card.urls'
@@ -133,8 +141,58 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} [{name}] {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname}: {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'django.log'),
+            'formatter': 'verbose',
+        },
+        'error_file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'errors.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'error_file'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+    },
+}
+
+# налаштування безпеки для продакшину
+if not DEBUG:  # тільки якщо сайт вже працює на HTTPS    
+    # наказує браузеру завжди використовувати HTTPS, навіть якщо користувач вів http
+    SECURE_HSTS_SECONDS = 31536000  # 1 рік у секундах
+    # включає всі піддомени (наприклад, www.hypno-consult.com.ua`, `blog.hypno-consult.com.ua`).
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # Автоматично перенаправляє з HTTP → HTTPS
+    SECURE_SSL_REDIRECT = True
+    # Змушує cookie з сесією передаватися лише через HTTPS. Захищає від крадіжки сесій через MITM-атаки
+    SESSION_COOKIE_SECURE = True
+    # Те саме, але для **CSRF-токена**, який Django використовує для захисту форм
+    CSRF_COOKIE_SECURE = True
 
 PHONE = env('CONTACT_PHONE')
 EMAIL = env('CONTACT_EMAIL')
 TELEGRAM_USERNAME = env('CONTACT_TELEGRAM')
 VIBER_PHONE = env('CONTACT_VIBER')
+
+GEOLITE_FILE = BASE_DIR.parent / 'db/GeoLite2-City.mmdb'

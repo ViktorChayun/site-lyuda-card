@@ -4,7 +4,29 @@
   {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Консультування у парапсихолога{% endblock %}</title>
+  
+  <!-- SEO: базові мета-теги для пошуку-->
+  <meta name="description" content="Консультації з гіпнотерапії, регресійні сеанси, парапсихологічна допомога. Особистий досвід та індивідуальний підхід.">
+  <meta name="keywords" content="гіпнотерапія, регресія, парапсихологія, консультація, самопізнання, духовні практики, саморозвиток">
+  <meta name="author" content="Чаюн Людмила">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (соцмережі) -->
+  <meta property="og:title" content="Гіпнотерапія та парапсихологічні консультації – Чаюн Людмила">
+  <meta property="og:description" content="Допомога через гіпноз, регресію, парапсихологію. Індивідуальний підхід до кожного.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hypno-consult.com.ua">
+  <meta property="og:image" content="https://hypno-consult.com.ua/static/images/og-preview.jpg">
+  <meta property="og:locale" content="uk_UA">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="Гіпнотерапія та парапсихологічні консультації – Чаюн Людмила">
+  <meta name="twitter:title" content="Гіпнотерапія та парапсихологічні консультації – Чаюн Людмила">
+  <meta name="twitter:description" content="Допомога через гіпноз, регресію, парапсихологію. Індивідуальний підхід до кожного.">
+  <meta name="twitter:image" content="https://hypno-consult.com.ua/static/images/og-preview.jpg">
+
+
+  <title>{% block title %}Консультування у парапсихолога - Людмила Чаюн{% endblock %}</title>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -71,7 +93,15 @@
   {% block content %}{% endblock %}
 </main>
 
+<footer class="text-center text-muted py-3 small border-top mt-5">
+  &copy; 2025 <a href="https://alpha-omega.com.ua" class="text-decoration-none text-muted">alpha-omega.com.ua</a>. Всі права захищені.
+</footer>
 
+<!--
+<footer class="bg-dark text-center text-light py-3 small mt-5">
+  &copy; 2025 <a href="https://alpha-omega.com.ua" class="text-decoration-none text-light">alpha-omega.com.ua</a>. Всі права захищені.
+</footer>
+-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
