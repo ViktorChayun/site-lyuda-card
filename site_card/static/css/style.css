@@ -4,7 +4,7 @@
   --light-blue: #e6f3ff;
   --light-blue-transparent: rgba(230, 243, 255, 0.7); /* те ж саме, але з прозорістю */
   --footer-blue: #d4eaff;
-   --navbar-height: 56px;
+   --navbar-height: 65px;
 }
 
 .content-wrapper {
@@ -17,7 +17,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
 }
-
+/* ====================== MENU ====================== */
 nav.navbar {
   height: var(--navbar-height) !important;
   background-color: var(--dark-blue);
@@ -27,28 +27,112 @@ nav.navbar {
   z-index: 999;
 }
 
-.navbar-brand, .nav-link {
+/* Вирівнювання пунктів меню по лівому краю */
+.navbar-nav {
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+/*підпис сайту в навбарі*/
+.navbar .navbar-brand {
   color: white !important;
+  white-space: normal !important;   /* дозволяє переносити текст */
+  word-break: break-word;           /* переносить довгі слова */
+  max-width: 80vw;                  /* обмеж ширину вікном (замість фіксованої) */
+  font-size: 1rem;                  /* адаптивний розмір шрифту */
+}
+/* ====================== MOBILE MENU FIX ====================== */
+/* Стабільний фон і тінь для мобільного меню */
+.navbar-collapse {
+  background-color: var(--light-blue) !important;
+  color: #003366; /* темно-синій текст */
+  padding: 1rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  text-align: left !important;
 }
 
-.nav-link:hover {
-  color: var(--main-blue) !important;
+/*для випадаючого меню мови (щоб не було прозорості):*/
+.navbar .dropdown-menu {
+  background-color: var(--light-blue);
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-footer img {
-  filter: grayscale(100%);
-  transition: all 0.2s ease-in-out;
+/* Стилізація пунктів меню */
+.navbar-nav .nav-link {
+  color: #003366 !important; /* темно-синій */
+  display: flex;
+  justify-content: flex-start !important;  /* Вирівнює текст ліворуч */
+  text-align: left;
+  padding-left: 0.75rem;
+
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.6rem 1rem;
 }
 
-footer img:hover {
-  filter: none;
-  transform: scale(1.1);
+/* Стилізація при наведенні */
+.navbar-nav .nav-link:hover {
+  background-color: #e6f3ff;
+  border-radius: 6px;
 }
 
+/* Центрування іконок телеграм, вайбер, якщо вони окремі */
+.navbar-nav .nav-link i,
+.navbar-nav .nav-link img {
+  font-size: 1.2rem;
+  height: 20px;
+}
+
+/*Щоб не «злипалися» елементи в мобільному вигляді*/
+.navbar-nav .nav-item {
+  margin-bottom: 0.5rem;
+}
+
+
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none; /* приховати мобільне меню на десктопі */
+  }
+}
+
+/* спеціалььні налаштування для мобільного */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none; /* приховати десктоп-меню на мобілці */
+  }
+
+  .navbar-nav {
+    align-items: flex-start !important;
+  }
+
+  .navbar-collapse {
+    background-color: var(--light-blue) !important;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+    max-width: 300px;
+    width: 60%;
+    border-radius: 12px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+  }
+
+  .navbar-toggler {
+    margin-top: 0.25rem; /* або 0, можна підібрати */
+    align-self: flex-start;
+  }
+
+}
+/*===============================================================================*/
 .social-icon {
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease;
 }
-
 .social-icon:hover {
   transform: scale(1.2);
 }
@@ -60,6 +144,17 @@ footer img:hover {
 .viber-icon {
   filter: invert(23%) sepia(91%) saturate(1522%) hue-rotate(247deg) brightness(96%) contrast(104%);
 }
+/*===============================================================================*/
+footer img {
+  filter: grayscale(100%);
+  transition: all 0.2s ease-in-out;
+}
+
+footer img:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+
 
 .services h2 {
   color: var(--dark-blue);

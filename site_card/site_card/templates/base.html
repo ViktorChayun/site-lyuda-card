@@ -51,51 +51,59 @@
     </button>
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
+      <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="{% url 'app_main:home' %}">🏠 {% trans "Головна" %}</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'app_main:faq' %}">❓ {% trans "Часті запитання" %}</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'app_main:services' %}">🛠️ {% trans "Послуги" %}</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'app_main:about' %}">👤 {% trans "Про себе" %}</a></li>
         
-        <!-- Viber -->
-        <li class="nav-item mx-2">
-          <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}" title="Viber">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" alt="Viber" width="24" class="social-icon viber-icon">
-          </a>
-        </li>
-        
-        <!-- Telegram -->
-        <li class="nav-item me-2">
-          <a href="https://t.me/{{ contact_telegram }}" title="Telegram" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" width="24" class="social-icon telegram-icon">
-          </a>
-        </li>
-        
-        <!-- Email -->
-        <li class="nav-item me-2">
-          <a href="mailto:{{ contact_email }}" title="Email">
-            <!-- <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="24" class="social-icon email-icon"> -->
-             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email" width="24" class="social-icon email-icon">
-          </a>
-        </li>
+        <!-- кнопки соціалььних мереж  -->
+        <li class="nav-item">
+          <div class="nav-link d-flex align-items-center gap-3">
+            <!-- Viber -->
+            <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}" title="Viber">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" 
+              alt="Viber" 
+              width="24" 
+              class="social-icon viber-icon">
+            </a>
 
+            <!-- Telegram -->
+            <a href="https://t.me/{{ contact_telegram }}" title="Telegram" target="_blank">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" 
+              alt="Telegram" 
+              width="24" 
+              class="social-icon telegram-icon">
+            </a>
+            
+            <!-- Email -->
+            <a href="mailto:{{ contact_email }}" title="Email">
+              <!-- <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="24" class="social-icon email-icon"> -->
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" 
+              alt="Email" 
+              width="24" 
+              class="social-icon email-icon">
+            </a>
+          </div>
+        </li>
+      
         <!-- Phone -->
-        <li class="nav-item ms-3">
+        <li class="nav-item">
           <a href="tel:{{ contact_phone }}" class="nav-link d-flex align-items-center gap-1" title="Подзвонити">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="#5CB8FF" class="bi bi-telephone-fill" viewBox="0 0 16 16">
               <path d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.188a1.745 1.745 0 0 0 .457 1.59l2.457 2.457a1.745 1.745 0 0 0 1.59.457l2.188-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.795a1.745 1.745 0 0 1 .163 2.61l-1.034 1.034a2.745 2.745 0 0 1-2.846.658c-2.902-1.03-5.754-3.27-8.483-6C1.743 6.265-.497 3.413.532.511a2.745 2.745 0 0 1 1.353-.957z"/>
             </svg>
-            <span class="d-none d-sm-inline"> {{ contact_phone }} </span>
+            <span class="d-inline"> {{ contact_phone }} </span>
           </a>
         </li>
 
         <!-- Language selector -->
-        <li class="nav-item dropdown ms-3">
+        <li class="nav-item dropdown">
           <form action="{% url 'set_language' %}" method="post" class="dropdown">
             {% csrf_token %}
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               🌐 {% get_current_language as LANGUAGE_CODE %}
-              <span class="ms-1 d-none d-sm-inline">
+              <span class="ms-1 d-inline">
                 {% if LANGUAGE_CODE == "uk" %}Укр{% elif LANGUAGE_CODE == "ru" %}Рус{% endif %}
               </span>
             </a>
@@ -114,7 +122,7 @@
             <input type="hidden" name="next" value="{{ request.path }}">
           </form>
         </li>
-        
+
       </ul>
     </div>
 
