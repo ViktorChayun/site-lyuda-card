@@ -2,7 +2,14 @@
   --main-blue: #5CB8FF;
   --dark-blue: #003366;
   --light-blue: #e6f3ff;
+  --light-blue-transparent: rgba(230, 243, 255, 0.7); /* те ж саме, але з прозорістю */
   --footer-blue: #d4eaff;
+   --navbar-height: 56px;
+}
+
+.content-wrapper {
+  padding-top: var(--navbar-height) !important;
+  min-height: calc(100vh - var(--navbar-height)); /* гарантуємо простір */
 }
 
 body {
@@ -12,7 +19,12 @@ body {
 }
 
 nav.navbar {
+  height: var(--navbar-height) !important;
   background-color: var(--dark-blue);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .navbar-brand, .nav-link {
@@ -66,7 +78,7 @@ footer img:hover {
 }
 
 .hero-section {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - var(--navbar-height));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,12 +94,12 @@ footer img:hover {
   margin-bottom: 30px;
   box-shadow: 0 0 20px rgba(0, 51, 102, 0.2);
 }
-
+/* =============================================================  */
 /* Додаткові стилі - home*/
 .section-home {
   margin-top: 0;
-  padding-top: 0px;
-  padding-bottom: 30px;
+  padding-top:  var(--navbar-height); /* щоб підняти секцію ближче до navbar */
+  /*padding-bottom: 30px;*/
 }
 
 .section-home .lead {
@@ -95,42 +107,98 @@ footer img:hover {
 }
 
 .section-home .photo{
-  width: 60%;
-  max-width: 550px;
+  width: 100%;
+  /*max-width: 550px;*/
+  max-width: 100%;
   height: auto;
+  box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.5); /* підсилена тінь */
+  border-radius: 20px; /* для м'якших країв */
+}
+/* =============================================================  */
+/* Додаткові стилі - about*/
+.section-about {
+  margin-top: 0;
+  /*padding-top: var(--navbar-height);*/ /* щоб підняти секцію ближче до navbar */
+  /*padding-bottom: 30px;*/
 }
 
-/* Додаткові стилі - about*/
 .section-about .photo {
-  max-width: 100%;
+  max-width: 70%;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
-
+/*About me - права карточка для тексту*/
 .section-about .card-custom {
-  background-color: #ffffff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  /*background-color: #ffffff;*/
+  background-color: var(--light-blue);
+  border-radius: 20px;
+  border: 1.5px solid var(--dark-blue);
+
+  /*box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);*/
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+  /*box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);*/ /* широка м’яка тінь */
+  /*box-shadow: 0 12px 24px rgba(0, 51, 102, 0.3);*/ /* темно-синя тінь */
+
+  transition: box-shadow 0.3s ease;  
 }
 
+/*About me - text*/
 .section-about .card-body p {
   text-align: justify;
-  line-height: 1.5;
+  line-height: 1.5;  
 }
 
-
+/* =============================================================  */
 /* Додаткові стилі - FAQ  */
 .section-faq .alert {
   font-size: 1.25rem;
 }
 
+/* Загальний стиль для accordion-item (карточки FAQ) */
+.faq-card {
+  /* background-color: var(--light-blue); */ /* Світло-блакитний фон */
+  background-color: var(--light-blue-transparent); /* Світло-блакитний фон з прозорістю*/
+  
+  border: 2px solid rgba(0, 123, 255, 0.3); /* Світлий блакитний бордер */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Тінь для об'єму */
+  transition: all 0.3s ease;
+
+  /* backdrop-filter: blur(5px); */ /* опціонально — додає ефект "запотівання" */
+}
+
+/* При наведенні — підсвічування */
+.faq-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: #007bff;
+  /*background-color: #d9efff;*/ /* трохи інший блакитний */
+  background-color: rgba(217, 239, 255, 0.7); /* трохи інший блакитний - - з прозорістю*/
+}
+
+/* колір фону карточки запитання*/
+.accordion-button {
+  /* background-color: var(--light-blue); */
+  background-color: var(--light-blue-transparent);
+  
+  color: #003366; /* текст темно-синій */
+  /*color: rgba(0, 51, 102, 0.8);*/ /* текст темно-синій з прозорістю*/
+  border: 1px solid #007bff;
+  border-radius: 12px;
+}
+/* колір фону карточки - відкрита */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(106, 199, 217, 0.7); /* трохи інший блакитний - - з прозорістю*/
+  color: #003366; /* Або зміни, якщо треба контраст */
+}
+/* =============================================================  */
+/* Додаткові стилі - SERVICE  */
 .section-services .card-body div {
   font-size: 2.2rem;
 }
-
+/* =============================================================  */
 .btn-session {
   padding: 0.6rem 1.5rem;
 }
-
 
 footer {
   background-color: var(--footer-blue) !important;
@@ -140,4 +208,116 @@ footer {
 
   padding: 10px 0;
   color: #fff;
+}
+
+
+
+.card:hover {
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);
+  /*box-shadow: 0 5px 10px rgba(26, 33, 238, 0.6);*/
+  border: 2px solid #4800ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  /*background-color: #dfebfd;*/
+  background-color: var(--main-blue);
+}
+
+.service-card {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #1100ff;
+  overflow: visible; /* дозволяє вспливати меню */
+  z-index: 1;
+  margin-bottom: 20px;  /*  відступ між карточками  */
+  background-color: var(--light-blue);
+}
+
+/* =============================================================  */
+.home-background {
+  background-image: url("/static/images/background-main.jpg");
+  background-size: cover;         /* Розтягнути зображення на весь екран */
+  background-position: center;    /* Центрувати */
+  background-repeat: no-repeat;   /* Не повторювати */
+  background-attachment: fixed;   /* Фон не прокручується */
+  scroll-behavior: smooth;
+  
+  width: 100vw;         /* вся ширина вікна */
+  /*min-height: 100vh;*/ /* вся висота екрану */
+  padding-top:  var(--navbar-height); /* замість main */
+  min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
+  display: flex;
+  /*z-index: 0;*/
+}
+
+.service-background {
+  position: relative;
+  background-image: url("/static/images/background-services-3.jpeg");
+  background-size: cover;         /* Розтягнути зображення на весь екран */
+  background-position: center;    /* Центрувати */
+  background-repeat: no-repeat;   /* Не повторювати */
+  background-attachment: fixed;   /* Фон не прокручується */
+  scroll-behavior: smooth;
+
+  width: 100vw;         /* вся ширина вікна */
+  padding-top:  var(--navbar-height); /* замість main */
+  min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
+}
+
+
+.faq-background {
+  position: relative;
+  /*background-image: url("/static/images/background-faq.jpg");*/
+  background-image: url("/static/images/background-faq-1.png");
+  background-size: cover;         /* Розтягнути зображення на весь екран */
+  background-position: center;    /* Центрувати */
+  background-repeat: no-repeat;   /* Не повторювати */
+  background-attachment: fixed;   /* Фон не прокручується */
+  scroll-behavior: smooth;
+
+  width: 100vw;         /* вся ширина вікна */
+  padding-top:  var(--navbar-height); /* замість main */
+  min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
+}
+
+.about-background {
+  position: relative;
+  /*background-image: url("/static/images/background-about.webp");*/
+  background-image: url("/static/images/background-about-8.png");
+  background-size: cover;         /* Розтягнути зображення на весь екран */
+  background-position: center;    /* Центрувати */
+  background-repeat: no-repeat;   /* Не повторювати */
+  /*background-size: 100% auto;*/
+  background-attachment: fixed;   /* Фон не прокручується */
+  scroll-behavior: smooth;
+  
+  width: 100vw;         /* вся ширина вікна */
+  padding-top:  var(--navbar-height); /* замість main */
+  min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
+}
+
+/* =============================================================  */
+.section-home h1,
+.section-home p.lead {
+  /*color: rgba(0, 34, 102, 0.95);*/ /* Темно-синій з прозорістю */
+  color: #002198; /* темно-синій, читається на світлому і темному */
+  /*text-shadow: 1px 1px 3px rgba(0,0,0,0.4);*/ /* тінь для контрасту */
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*для секції з описом послуг*/
+.home-description {
+  color: #002198; /* темно-синій, читається на світлому і темному */
+}
+
+.btn-custom {
+  background-color: rgba(0, 123, 255, 0.85);
+  border: 1px solid #004997;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-custom:hover {
+  background-color: #004997;
+  color: #ffffff;
+  border: 1px solid #1900ff;
 }

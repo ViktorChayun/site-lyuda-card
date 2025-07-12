@@ -3,20 +3,33 @@
 
 {% block content %}
 
-<section class="section-about py-5">
+<!-- <section class="section-about py-5 about-background"> -->
+<section class="section-about about-background container-fluid bg-light-blue min-vh-90 d-flex flex-column">
+  
+  <div class="container-fluid px-0">
+    <div class="row align-items-start justify-content-start">
+      
+      <!-- Ліва колонка з фото + сертифікат -->
+       <div class="col-lg-3 col-md-5 text-center ps-0 mb-4">
+        <!--модальне вікно для розширення картинки -->
+        <a href="#" data-bs-toggle="modal" data-bs-target="#photoModal">
+          <img src="{% static 'images/my-photo-about-me.jpg' %}" 
+              alt="Чаюн Людмила" 
+              class="img-fluid rounded shadow-lg photo mb-4"
+              style="cursor: zoom-in;">
+        </a>
 
-  <div class="container">
-    <div class="row align-items-start justify-content-center">
-      <!-- Ліва колонка з фото -->
-      <div class="col-lg-4 col-md-5 text-center mb-4 mb-lg-0 align-self-start">
-        <img src="{% static 'images/my-photo.jpg' %}"
-              alt="Чаюн Людмила"
-              class="img-fluid rounded shadow-lg photo">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#certificateModal">
+          <img src="{% static 'images/certificate.jpg' %}" 
+              alt="Сертифікат з гіпнотерапії" 
+              class="img-fluid rounded shadow-lg photo mb-4"
+              style="cursor: zoom-in;">
+        </a>
       </div>
 
       <!-- Права колонка з історією -->
-      <div class="col-lg-8 col-md-12">
-        <div class="card shadow-lg border-0 p-4 card-custom">
+      <div class="col-lg-7 col-md-12 mx-auto px-3">
+        <div class="card-custom p-4 mx-auto">
           <div class="card-body">
             <h2 class="card-title text-center text-primary mb-4">Моя історія</h2>
             <div class="fs-5">
@@ -32,27 +45,45 @@
                 <p>Гіпноз — це не магія. Це не про навіювання, а про доступ до глибинних шарів психіки. Для тих, кому слово "гіпноз" звучить страшно — завжди є альтернативи: медитація, розмова, м’які практики. Я — за індивідуальний підхід до кожного.</p>
                 <p>Мій метод — для тих, хто хоче познайомитися з собою, пропрацювати травми, розширити себе і змінити життя. Якщо ви один з таких — я з радістю буду вашим провідником у цій подорожі.</p>  
             </div>
-
-            <div class="container text-center">
-            <img src="{% static 'images/certificate.jpg' %}" 
-                alt="Сертифікат" 
-                class="img-fluid rounded shadow" 
-                style="max-width: 600px;">
-          </div>
+        </div>
+        <!-- кнопка записатися на сесію -->
+        <div class="text-center mt-4">
+          <a href="https://t.me/your_username" class="btn btn-primary btn-lg px-4 py-2">
+            Записатися на сесію
+          </a>
+        </div>
 
         </div>
-        </div>
+
       </div>
       
-      <!-- кнопка записатися на сесію -->
-      <div class="text-center mt-4">
-        <a href="https://t.me/your_username" class="btn btn-primary btn-lg px-4 py-2">
-          Записатися на сесію
-        </a>
-      </div>
+      
 
     </div>
   </div>
+
+<!-- Модальне вікно для фото -->
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0">
+        <img src="{% static 'images/my-photo-about-me.jpg' %}" alt="Чаюн Людмила" class="img-fluid rounded shadow-lg">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальне вікно для сертифіката -->
+<div class="modal fade" id="certificateModal" tabindex="-1" aria-labelledby="certificateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0">
+        <img src="{% static 'images/certificate.jpg' %}" alt="Сертифікат з гіпнотерапії" class="img-fluid rounded shadow-lg">
+      </div>
+    </div>
+  </div>
+</div>
+
 </section>
 
 {% endblock %}
