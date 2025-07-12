@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'app_main.middlewares.VisitorLoggingMiddleware',  # прослойка для трекінгу користувачів, збір інфи про них
+    'django.middleware.locale.LocaleMiddleware',  # для вибору мови
 ]
 
 ROOT_URLCONF = 'site_card.urls'
@@ -116,12 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
 USE_TZ = True
 
 
@@ -196,3 +192,14 @@ TELEGRAM_USERNAME = env('CONTACT_TELEGRAM')
 VIBER_PHONE = env('CONTACT_VIBER')
 
 GEOLITE_FILE = BASE_DIR.parent / 'db/GeoLite2-City.mmdb'
+
+#  налаштування для вибору мови
+LANGUAGE_CODE = 'uk'
+USE_I18N = True
+
+LANGUAGES = [
+    ('uk', 'Українська'),
+    ('ru', 'Русский'),
+]
+
+LOCALE_PATHS = [BASE_DIR / 'locale']

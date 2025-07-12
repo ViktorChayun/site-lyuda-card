@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
   {% load static %}
+  {% load i18n %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -25,8 +26,8 @@
   <meta name="twitter:description" content="Допомога через гіпноз, регресію, парапсихологію. Індивідуальний підхід до кожного.">
   <meta name="twitter:image" content="https://hypno-consult.com.ua/static/images/og-preview.jpg">
 
+  <title>{% block title %}{% trans "Консультування у парапсихолога - Людмила Чаюн" %}{% endblock %}</title>
 
-  <title>{% block title %}Консультування у парапсихолога - Людмила Чаюн{% endblock %}</title>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -42,7 +43,7 @@
     <!-- <a class="navbar-brand" href="{% url 'app_main:home' %}">Консультування у парапсихолога</a> -->
     <a class="navbar-brand d-flex align-items-center justify-content-start gap-2 me-auto" href="{% url 'app_main:home' %}">
       <img src="{% static 'images/logo-3.jpeg' %}" alt="Логотип" height="40">
-      <span>Консультування у парапсихолога</span>
+      <span>{% trans "Консультування у парапсихолога" %}</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -51,10 +52,10 @@
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:home' %}">🏠 Головна</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:faq' %}">❓ Часті запитання</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:services' %}">🛠️ Послуги</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:about' %}">👤 Про себе</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:home' %}">🏠 {% trans "Головна" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:faq' %}">❓ {% trans "Часті запитання" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:services' %}">🛠️ {% trans "Послуги" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:about' %}">👤 {% trans "Про себе" %}</a></li>
         
         <!-- Viber -->
         <li class="nav-item mx-2">
@@ -88,6 +89,32 @@
           </a>
         </li>
 
+        <!-- Language selector -->
+        <li class="nav-item dropdown ms-3">
+          <form action="{% url 'set_language' %}" method="post" class="dropdown">
+            {% csrf_token %}
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              🌐 {% get_current_language as LANGUAGE_CODE %}
+              <span class="ms-1 d-none d-sm-inline">
+                {% if LANGUAGE_CODE == "uk" %}Укр{% elif LANGUAGE_CODE == "ru" %}Рус{% endif %}
+              </span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+              <li>
+                <button type="submit" name="language" value="uk" class="dropdown-item d-flex align-items-center gap-2">
+                  🇺🇦 Українська
+                </button>
+              </li>
+              <li>
+                <button type="submit" name="language" value="ru" class="dropdown-item d-flex align-items-center gap-2">
+                  🇷🇺 Русский
+                </button>
+              </li>
+            </ul>
+            <input type="hidden" name="next" value="{{ request.path }}">
+          </form>
+        </li>
+        
       </ul>
     </div>
 

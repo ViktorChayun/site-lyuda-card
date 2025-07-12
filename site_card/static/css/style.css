@@ -321,3 +321,12 @@ footer {
   color: #ffffff;
   border: 1px solid #1900ff;
 }
+
+
+/* оформлення менюшки для селектора мови */
+.navbar .dropdown-menu {
+  min-width: 150px;
+}
+.navbar .dropdown-item:hover {
+  background-color: #f0f8ff;
+}

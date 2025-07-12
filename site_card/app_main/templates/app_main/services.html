@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
+
 {% block content %}
 
 <section class="container-fluid section-services bg-light-blue service-background min-vh-90 d-flex flex-column">
   <div class="container">
 
-    <h2 class="text-center mb-5 text-primary">Мої послуги</h2>
+    <h2 class="text-center mb-5 text-primary">
+      {% trans "Мої послуги" %}
+    </h2>
 
     <div class="row g-4">
       
@@ -14,8 +18,14 @@
         <div class="card h-100 service-card">
           <div class="card-body text-center">
             <div style="font-size: 2.2rem;">🤝</div>
-            <h5 class="card-title">Перша зустріч</h5>
-            <p class="card-text">Знайомство, обговорення запиту<br><strong>1.5 год</strong></p>
+            <h5 class="card-title">
+              {% trans "Перша зустріч" %}
+            </h5>
+            <p class="card-text">
+              {% trans "Знайомство, обговорення запиту" %}<br>
+              <strong>
+                {% trans "1.5 год" %}
+              </strong></p>
           </div>
         </div>
       </div>
@@ -25,8 +35,12 @@
         <div class="card h-100 service-card">
           <div class="card-body text-center">
             <div style="font-size: 2.2rem;">🗨️</div>
-            <h5 class="card-title">Звичайна сесія</h5>
-            <p class="card-text">Розбір ситуації + пропрацювання<br><strong>1.5 год</strong></p>
+            <h5 class="card-title">{% trans "Звичайна сесія" %}</h5>
+            <p class="card-text">
+              {% trans "Розбір ситуації + пропрацювання" %}<br>
+              <strong>
+                {% trans "1.5 год" %}
+              </strong></p>
           </div>
         </div>
       </div>
@@ -36,8 +50,12 @@
         <div class="card h-100 service-card">
           <div class="card-body text-center">
              <div style="font-size: 2.2rem;">🌀</div>
-            <h5 class="card-title">Гіпнотична / регресивна сесія</h5>
-            <p class="card-text">Глибока трансформація через гіпноз або регресію<br><strong>1.5–2 год</strong></p>
+            <h5 class="card-title">
+              {% trans "Гіпнотична / регресивна сесія" %}
+            </h5>
+            <p class="card-text">
+              {% trans "Глибока трансформація через гіпноз або регресію" %}<br>
+              <strong>{% trans "1.5–2 год" %}</strong></p>
           </div>
         </div>
       </div>
@@ -45,9 +63,12 @@
     </div>
 
     <div class="text-center mt-4">
-      <p class="text-muted mb-2 fw-medium">Формат роботи: онлайн. Очні зустрічі — за запитом.</p>
-      <!-- <a href="https://t.me/your_username" class="btn btn-outline-primary px-4 py-2">Записатися на сесію</a> -->
-      <a href="https://t.me/your_username" class="btn btn-primary btn-lg mt-3 btn-session">Записатися на сесію</a>
+      <p class="text-muted mb-2 fw-medium">
+        {% trans "Формат роботи: онлайн. Очні зустрічі — за запитом." %}
+      </p>
+      <a href="https://t.me/your_username" class="btn btn-primary btn-lg mt-3 btn-session">
+        {% trans "Записатися на сесію" %}
+      </a>
     </div>
 
   </div>
