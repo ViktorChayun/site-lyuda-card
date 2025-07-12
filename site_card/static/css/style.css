@@ -40,6 +40,10 @@ nav.navbar {
   word-break: break-word;           /* переносить довгі слова */
   max-width: 80vw;                  /* обмеж ширину вікном (замість фіксованої) */
   font-size: 1rem;                  /* адаптивний розмір шрифту */
+
+  max-width: 65vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* ====================== MOBILE MENU FIX ====================== */
 /* Стабільний фон і тінь для мобільного меню */
@@ -61,22 +65,23 @@ nav.navbar {
 
 /* Стилізація пунктів меню */
 .navbar-nav .nav-link {
-  color: #003366 !important; /* темно-синій */
+  color: var(--light-blue) !important; /* світло-синій для десктопу*/
   display: flex;
   justify-content: flex-start !important;  /* Вирівнює текст ліворуч */
   text-align: left;
-  padding-left: 0.75rem;
+  /*padding-left: 0.75rem;*/
 
   align-items: center;
   gap: 0.5rem;
   font-weight: 500;
   font-size: 1.1rem;
-  padding: 0.6rem 1rem;
+  /*padding: 0.6rem 1rem;*/
 }
 
 /* Стилізація при наведенні */
 .navbar-nav .nav-link:hover {
   background-color: #e6f3ff;
+  color: var(--dark-blue) !important; /* щоб був контраст */
   border-radius: 6px;
 }
 
@@ -92,15 +97,19 @@ nav.navbar {
   margin-bottom: 0.5rem;
 }
 
-
-@media (min-width: 769px) {
-  .mobile-menu {
-    display: none; /* приховати мобільне меню на десктопі */
+/* Bootstrap вважає lg (широкий екран) = ≥992px */
+@media (min-width: 992px) {
+  /* приховати мобільне меню на десктопі */
+  #mobileMenu {
+    display: none !important;
+  }
+  .desktop-menu {
+    display: flex !important;
   }
 }
 
 /* спеціалььні налаштування для мобільного */
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .desktop-menu {
     display: none; /* приховати десктоп-меню на мобілці */
   }
@@ -118,15 +127,26 @@ nav.navbar {
     width: 60%;
     border-radius: 12px;
     margin-top: 5px;
-    margin-left: auto;
+    /*margin-left: auto;
     margin-right: auto;
+    */
+    margin: 0.5rem 0.5rem 0.5rem 0.75rem; /* зверху, справа, знизу, зліва */
+    margin-left: 0.75rem;
+    margin-right: auto;
+
     padding: 1rem;
   }
 
   .navbar-toggler {
+    background-color: var(--light-blue);
     margin-top: 0.25rem; /* або 0, можна підібрати */
     align-self: flex-start;
   }
+
+  .navbar-nav .nav-link {
+    color: var(--dark-blue) !important; /* темно-синій */
+  }
+
 
 }
 /*===============================================================================*/
@@ -193,7 +213,9 @@ footer img:hover {
 /* Додаткові стилі - home*/
 .section-home {
   margin-top: 0;
-  padding-top:  var(--navbar-height); /* щоб підняти секцію ближче до navbar */
+  /*padding-top: 1rem;*/
+  padding-top: 0;
+  /* padding-top:  var(--navbar-height); */ /* щоб підняти секцію ближче до navbar */
   /*padding-bottom: 30px;*/
 }
 
@@ -325,7 +347,7 @@ footer {
   background-color: var(--light-blue);
 }
 
-/* =============================================================  */
+/* ========================== ФОН ============================  */
 .home-background {
   background-image: url("/static/images/background-main.jpg");
   background-size: cover;         /* Розтягнути зображення на весь екран */
@@ -336,7 +358,7 @@ footer {
   
   width: 100vw;         /* вся ширина вікна */
   /*min-height: 100vh;*/ /* вся висота екрану */
-  padding-top:  var(--navbar-height); /* замість main */
+  /*padding-top:  var(--navbar-height);*/ /* замість main */
   min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
   display: flex;
   /*z-index: 0;*/
@@ -352,15 +374,14 @@ footer {
   scroll-behavior: smooth;
 
   width: 100vw;         /* вся ширина вікна */
-  padding-top:  var(--navbar-height); /* замість main */
+  /*padding-top:  var(--navbar-height); *//* замість main */
   min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
 }
 
 
 .faq-background {
   position: relative;
-  /*background-image: url("/static/images/background-faq.jpg");*/
-  background-image: url("/static/images/background-faq-1.png");
+  background-image: url("/static/images/background-faq.png");
   background-size: cover;         /* Розтягнути зображення на весь екран */
   background-position: center;    /* Центрувати */
   background-repeat: no-repeat;   /* Не повторювати */
@@ -368,24 +389,70 @@ footer {
   scroll-behavior: smooth;
 
   width: 100vw;         /* вся ширина вікна */
-  padding-top:  var(--navbar-height); /* замість main */
+  /*padding-top:  var(--navbar-height); */
   min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
 }
 
 .about-background {
   position: relative;
-  /*background-image: url("/static/images/background-about.webp");*/
   background-image: url("/static/images/background-about-8.png");
   background-size: cover;         /* Розтягнути зображення на весь екран */
   background-position: center;    /* Центрувати */
   background-repeat: no-repeat;   /* Не повторювати */
-  /*background-size: 100% auto;*/
   background-attachment: fixed;   /* Фон не прокручується */
   scroll-behavior: smooth;
   
   width: 100vw;         /* вся ширина вікна */
-  padding-top:  var(--navbar-height); /* замість main */
+  /*padding-top:  var(--navbar-height); */
   min-height: calc(100vh -  var(--navbar-height)); /* компенсуємо навбар */
+}
+
+
+/* менші картинки для мобільних */
+@media (max-width: 991px) {
+  .home-background {
+    background-image: url("/static/images/background-main-mobile-2.png");
+
+    background-attachment: fixed;
+    background-position: top;
+    /*background-position: center;*/    /* Центрувати */
+    background-size: cover;         /* Розтягнути зображення на весь екран */
+    background-repeat: no-repeat;   /* Не повторювати */
+    background-attachment: fixed;   /* Фон не прокручується */
+  }
+  
+  .service-background {
+    background-image: url("/static/images/background-services-mobile.jpeg");
+
+    background-attachment: fixed;
+    background-position: top;
+    /*background-position: center;*/    /* Центрувати */
+    background-size: cover;         /* Розтягнути зображення на весь екран */
+    background-repeat: no-repeat;   /* Не повторювати */
+    background-attachment: fixed;   /* Фон не прокручується */
+  }
+
+  .faq-background {
+    background-image: url("/static/images/background-faq-mobile-2.png");
+    
+    background-attachment: fixed;
+    background-position: top;
+    /*background-position: center;*/    /* Центрувати */
+    background-size: cover;         /* Розтягнути зображення на весь екран */
+    background-repeat: no-repeat;   /* Не повторювати */
+    background-attachment: fixed;   /* Фон не прокручується */
+  }
+
+  .about-background {
+    background-image: url("/static/images/background-about-mobile.png");
+
+    background-attachment: fixed;
+    background-position: top;
+    /*background-position: center;*/    /* Центрувати */
+    background-size: cover;         /* Розтягнути зображення на весь екран */
+    background-repeat: no-repeat;   /* Не повторювати */
+    background-attachment: fixed;   /* Фон не прокручується */
+  }
 }
 
 /* =============================================================  */

@@ -37,106 +37,18 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-<nav class="navbar navbar-expand-lg fixed-top shadow">
-  <div class="container-fluid">
-    <!-- логотип-->
-    <!-- <a class="navbar-brand" href="{% url 'app_main:home' %}">Консультування у парапсихолога</a> -->
-    <a class="navbar-brand d-flex align-items-center justify-content-start gap-2 me-auto" href="{% url 'app_main:home' %}">
-      <img src="{% static 'images/logo-3.jpeg' %}" alt="Логотип" height="40">
-      <span>{% trans "Консультування у парапсихолога" %}</span>
-    </a>
+  <!-- адаптивне меню -->
+  {% include "menu.html" %}
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:home' %}">🏠 {% trans "Головна" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:faq' %}">❓ {% trans "Часті запитання" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:services' %}">🛠️ {% trans "Послуги" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:about' %}">👤 {% trans "Про себе" %}</a></li>
-        
-        <!-- кнопки соціалььних мереж  -->
-        <li class="nav-item">
-          <div class="nav-link d-flex align-items-center gap-3">
-            <!-- Viber -->
-            <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}" title="Viber">
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" 
-              alt="Viber" 
-              width="24" 
-              class="social-icon viber-icon">
-            </a>
+  <main class="content-wrapper flex-grow-1">
+    {% block content %}{% endblock %}
+  </main>
 
-            <!-- Telegram -->
-            <a href="https://t.me/{{ contact_telegram }}" title="Telegram" target="_blank">
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" 
-              alt="Telegram" 
-              width="24" 
-              class="social-icon telegram-icon">
-            </a>
-            
-            <!-- Email -->
-            <a href="mailto:{{ contact_email }}" title="Email">
-              <!-- <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="24" class="social-icon email-icon"> -->
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" 
-              alt="Email" 
-              width="24" 
-              class="social-icon email-icon">
-            </a>
-          </div>
-        </li>
-      
-        <!-- Phone -->
-        <li class="nav-item">
-          <a href="tel:{{ contact_phone }}" class="nav-link d-flex align-items-center gap-1" title="Подзвонити">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="#5CB8FF" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-              <path d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.188a1.745 1.745 0 0 0 .457 1.59l2.457 2.457a1.745 1.745 0 0 0 1.59.457l2.188-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.795a1.745 1.745 0 0 1 .163 2.61l-1.034 1.034a2.745 2.745 0 0 1-2.846.658c-2.902-1.03-5.754-3.27-8.483-6C1.743 6.265-.497 3.413.532.511a2.745 2.745 0 0 1 1.353-.957z"/>
-            </svg>
-            <span class="d-inline"> {{ contact_phone }} </span>
-          </a>
-        </li>
-
-        <!-- Language selector -->
-        <li class="nav-item dropdown">
-          <form action="{% url 'set_language' %}" method="post" class="dropdown">
-            {% csrf_token %}
-            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              🌐 {% get_current_language as LANGUAGE_CODE %}
-              <span class="ms-1 d-inline">
-                {% if LANGUAGE_CODE == "uk" %}Укр{% elif LANGUAGE_CODE == "ru" %}Рус{% endif %}
-              </span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
-              <li>
-                <button type="submit" name="language" value="uk" class="dropdown-item d-flex align-items-center gap-2">
-                  🇺🇦 Українська
-                </button>
-              </li>
-              <li>
-                <button type="submit" name="language" value="ru" class="dropdown-item d-flex align-items-center gap-2">
-                  🇷🇺 Русский
-                </button>
-              </li>
-            </ul>
-            <input type="hidden" name="next" value="{{ request.path }}">
-          </form>
-        </li>
-
-      </ul>
-    </div>
-
-  </div>
-</nav>
-
-<main class="content-wrapper flex-grow-1">
-  {% block content %}{% endblock %}
-</main>
-<!--
-<footer class="text-center text-muted py-3 small border-top mt-5">
-  &copy; 2025 <a href="https://alpha-omega.com.ua" class="text-decoration-none text-muted">alpha-omega.com.ua</a>. Всі права захищені.
-</footer>
--->
+  <!--
+  <footer class="text-center text-muted py-3 small border-top mt-5">
+    &copy; 2025 <a href="https://alpha-omega.com.ua" class="text-decoration-none text-muted">alpha-omega.com.ua</a>. Всі права захищені.
+  </footer>
+  -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 

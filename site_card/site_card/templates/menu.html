@@ -1,0 +1,145 @@
+{% load static %}
+{% load i18n %}
+
+<nav class="navbar navbar-expand-lg fixed-top shadow text-white">
+  <div class="container-fluid d-flex align-items-center justify-content-between position-relative">
+    <!-- Група: бургер + логотип - щооб не розїжалися на різні рядки в мобілці -->
+    <div class="d-flex align-items-center gap-2 flex-nowrap">
+        <!-- Тумблер меню - 3 горизнтальні риски -->
+        <button 
+            class="navbar-toggler border-0  d-lg-none d-flex gap-2"
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#mobileMenu">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Logo + Назва -->
+        <a class="navbar-brand d-flex align-items-center gap-2 mb-0" href="{% url 'app_main:home' %}">
+        <img src="{% static 'images/logo-3.jpeg' %}" alt="Логотип" height="40">
+        <span class="text-white">{% trans "Консультування у парапсихолога" %}</span>
+        </a>
+    </div>
+    
+
+    <!-- 🖥 DESKTOP MENU (≥992px) -->
+    <div class="desktop-menu d-none d-lg-flex">
+      <ul class="navbar-nav flex-row align-items-center gap-1">
+
+        <!-- Стандартні пункти -->
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'app_main:home' %}">🏠 {% trans "Головна" %}</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'app_main:faq' %}">❓ {% trans "Часті запитання" %}</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'app_main:services' %}">🛠️ {% trans "Послуги" %}</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'app_main:about' %}">👤 {% trans "Про себе" %}</a></li>
+
+        <!-- Соцмережі -->
+        <li class="nav-item d-flex gap-2 align-items-center">
+            <!-- Viber -->
+            <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}" title="Viber">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" 
+                alt="Viber"
+                width="24" 
+                class="social-icon viber-icon">
+            </a>
+            
+            <!-- Tellegram -->
+            <a href="https://t.me/{{ contact_telegram }}" title="Telegram" target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" 
+                alt="Telegram"
+                width="24" 
+                class="social-icon telegram-icon">
+            </a>
+            
+            <!-- Email -->
+            <a href="mailto:{{ contact_email }}" title="Email">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" 
+                alt="Email"
+                width="24" 
+              class="social-icon email-icon">
+            </a>
+        </li>
+
+        <!-- Телефон -->
+        <li class="nav-item">
+          <a href="tel:{{ contact_phone }}" class="nav-link text-white d-flex align-items-center gap-1">
+            <i class="bi bi-telephone-fill"></i>{{ contact_phone }}
+          </a>
+        </li>
+
+        <!-- Мова -->
+        <li class="nav-item dropdown">
+          <form action="{% url 'set_language' %}" method="post" class="dropdown">
+            {% csrf_token %}
+            <a class="nav-link dropdown-toggle text-white" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown">
+              🌐 {% get_current_language as LANGUAGE_CODE %}
+              {% if LANGUAGE_CODE == "uk" %}Укр{% elif LANGUAGE_CODE == "ru" %}Рус{% endif %}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><button type="submit" name="language" value="uk" class="dropdown-item">🇺🇦 Українська</button></li>
+              <li><button type="submit" name="language" value="ru" class="dropdown-item">🇷🇺 Русский</button></li>
+            </ul>
+            <input type="hidden" name="next" value="{{ request.path }}">
+          </form>
+        </li>
+      </ul>
+    </div>
+   </div>
+   
+   <!-- 📱 MOBILE MENU (<992px) -->
+   <div class="collapse navbar-collapse mobile-menu d-lg-none" id="mobileMenu">
+      <ul class="navbar-nav flex-column gap-2 py-3">
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:home' %}">🏠 {% trans "Головна" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:faq' %}">❓ {% trans "Часті запитання" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:services' %}">🛠️ {% trans "Послуги" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'app_main:about' %}">👤 {% trans "Про себе" %}</a></li>
+        <li class="nav-item d-flex justify-content-start gap-3">
+            <!-- Viber -->
+            <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" 
+                    alt="Viber"
+                    width="24" 
+                    class="social-icon viber-icon">
+            </a>
+            
+            <!-- Telegram -->
+            <a href="https://t.me/{{ contact_telegram }}">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" 
+                alt="Telegram"
+                width="24" 
+                class="social-icon telegram-icon">
+            </a>
+            
+            <!-- Email -->
+            <a href="mailto:{{ contact_email }}">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" 
+                alt="Email"
+                width="24" 
+                class="social-icon email-icon">
+            </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="tel:{{ contact_phone }}" 
+            class="nav-link d-flex align-items-center gap-2">
+            📞 <span class="d-inline"> {{ contact_phone }} </span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <form action="{% url 'set_language' %}" method="post" class="dropdown">
+            {% csrf_token %}
+            <a class="nav-link dropdown-toggle" href="#" id="langDropdownMobile" role="button" data-bs-toggle="dropdown">
+              🌐 {% get_current_language as LANGUAGE_CODE %}
+              {% if LANGUAGE_CODE == "uk" %}Укр{% elif LANGUAGE_CODE == "ru" %}Рус{% endif %}
+            </a>
+            <ul class="dropdown-menu">
+              <li><button type="submit" name="language" value="uk" class="dropdown-item">🇺🇦 Українська</button></li>
+              <li><button type="submit" name="language" value="ru" class="dropdown-item">🇷🇺 Русский</button></li>
+            </ul>
+            <input type="hidden" name="next" value="{{ request.path }}">
+          </form>
+        </li>
+      </ul>
+    </div>
+
+   </div>
+</nav>
