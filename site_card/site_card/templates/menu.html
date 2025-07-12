@@ -35,7 +35,7 @@
         <!-- Соцмережі -->
         <li class="nav-item d-flex gap-2 align-items-center">
             <!-- Viber -->
-            <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}" title="Viber">
+            <a href="viber://chat?number=%2B{{ contact_viber }}" title="Viber">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" 
                 alt="Viber"
                 width="24" 
@@ -94,7 +94,7 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'app_main:about' %}">👤 {% trans "Про себе" %}</a></li>
         <li class="nav-item d-flex justify-content-start gap-3">
             <!-- Viber -->
-            <a href="viber://chat?number=%2B{{ contact_viber|slice:'1:' }}">
+            <a href="viber://chat?number=%2B{{ contact_viber }}">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/viber.svg" 
                     alt="Viber"
                     width="24" 

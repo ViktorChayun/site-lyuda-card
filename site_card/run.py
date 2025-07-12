@@ -1,5 +1,7 @@
 import os
 
+wgi = "manage.py"
+
 # встановлення потрібних модулів
 os.system("pip install -r requirements.txt")
 # перевірка, які модулі реалььно встановлені у віртуальному оточенні
@@ -13,4 +15,10 @@ except ImportError as e:
     print("ImportError:", e)
 
 # накатуємо міграційні скріпти джанго
-os.system("python3 manage.py migrate")
+os.chdir('/home/hypnocon/site2')
+cmd = f"python3 {wgi} migrate"
+os.system(cmd)
+
+# збираємо всі статичні файли
+cmd = f"python {wgi} collectstatic"
+os.system(cmd)
