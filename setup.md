@@ -113,6 +113,36 @@ make html
 
 . як перевірити встановлені модулі?
     pip freeze > installed_packages.txt
+
+
+
+# генерація django-перекладів
+1. додати  в шаблонах:
+   {% trans %}
+2. Команди для генерації перекладів:
+    з російську на укр
+        django-admin makemessages -l ru
+    з укр на рос
+        django-admin makemessages -l uk
+3. редагуєш .po файли у locale/uk/LC_MESSAGES/django.po
+   - вказати переклад запропонованих рядків, наприкла
+
+    msgid "Головна"
+    msgstr "Главная"
+
+4. компіляція перекладу
+    django-admin compilemessages
+5. перезапусти сервер і перевір, коректність
+
+Альтернатива: Використати WSL (Linux-середовище в Windows)
+Якщо ти вже використовуєш Windows Subsystem for Linux (WSL), просто виконай:
+    sudo apt update
+    sudo apt install gettext
+А тоді можеш запускати команду makemessages вже з Linux-середовища.
+---------------------
+як опублікувати сайт на tuthost
+
+
 ---------------------
 ## Links
 * Шлях до застосутнку
@@ -122,10 +152,8 @@ make html
 * Шлях до адмін-панелі - http://127.0.0.1:8000/admin/login
 * Шлях до документації - 
 
-
 # User
 viktor
 123456
-
 
 https://github.com/P3TERX/GeoLite.mmdb

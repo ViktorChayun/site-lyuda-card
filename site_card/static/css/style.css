@@ -262,13 +262,27 @@ footer img:hover {
 /*About me - text*/
 .section-about .card-body p {
   text-align: justify;
-  line-height: 1.5;  
+  line-height: 1.5;
 }
 
 /* =============================================================  */
 /* Додаткові стилі - FAQ  */
 .section-faq .alert {
   font-size: 1.25rem;
+}
+
+.custom-alert {
+  background-color: rgba(0, 123, 255, 0.5);
+
+  border: 2px solid rgba(0, 123, 255, 0.3); /* Світлий блакитний бордер */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Тінь для об'єму */
+  transition: all 0.3s ease;
+}
+
+.custom-alert:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: #007bff;
 }
 
 /* Загальний стиль для accordion-item (карточки FAQ) */
@@ -311,6 +325,7 @@ footer img:hover {
 /* Додаткові стилі - SERVICE  */
 .section-services .card-body div {
   font-size: 2.2rem;
+  /* background-color: var(--light-blue-transparent); */ 
 }
 /* =============================================================  */
 .btn-session {
@@ -334,7 +349,6 @@ footer {
   /*box-shadow: 0 5px 10px rgba(26, 33, 238, 0.6);*/
   border: 2px solid #4800ff;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  /*background-color: #dfebfd;*/
   background-color: var(--main-blue);
 }
 
@@ -344,7 +358,7 @@ footer {
   overflow: visible; /* дозволяє вспливати меню */
   z-index: 1;
   margin-bottom: 20px;  /*  відступ між карточками  */
-  background-color: var(--light-blue);
+  background-color: var(--light-blue-transparent);
 }
 
 /* ========================== ФОН ============================  */
