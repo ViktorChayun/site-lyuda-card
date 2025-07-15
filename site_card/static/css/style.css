@@ -224,9 +224,9 @@ footer img:hover {
 }
 
 .section-home .photo{
-  width: 100%;
+  /*width: 70%;*/
   /*max-width: 550px;*/
-  max-width: 100%;
+  /*max-width: 70%;*/
   height: auto;
   box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.5); /* підсилена тінь */
   border-radius: 20px; /* для м'якших країв */

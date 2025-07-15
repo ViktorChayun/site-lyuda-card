@@ -39,5 +39,11 @@
    + мій
    + Люди
 
+
+pages
+    about 
+        modal window for photo --> scale
++ regenerate tranlation file
+
 оформити все в Docker для деплою
 ------------------------

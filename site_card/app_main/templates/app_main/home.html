@@ -15,10 +15,11 @@
       </div>
     <!-- </div> -->
 
-    <!-- Контент по правому боку -->
-    <div class="row align-items-center justify-content-end"> 
+    <!-- Контент по правому боку align-items-center  -->
+    <div class="row justify-content-end"> 
       <!-- Ліва колонка -->
-      <div class="col-lg-4 col-md-10 mb-4 mb-lg-0 ms-auto">
+      <!-- <div class="col-lg-5 col-md-10 mb-4 mb-lg-0 ms-auto"> -->
+      <div class="col-lg-5 col-md-10 mb-4 mb-lg-0 mt-4 pt-5">
         <div class="ps-lg-5 home-description">
           <h4 class="fw-semibold">{% trans "Методи роботи:" %}</h4>
           <ul class="list-unstyled fs-6">
@@ -27,8 +28,18 @@
             <li>• {% trans "Парапсихологія" %}</li>
           </ul>
 
-          <h4 class="fw-semibold mt-3">{% trans "Досвід:" %}</h4>
+          <h4 class="fw-semibold mt-2">{% trans "Досвід:" %}</h4>
           <p class="fs-6">{% trans "3 роки практичного досвіду, 20+ років самостійної роботи над собою" %}</p>
+
+          <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+            <a href="https://t.me/your_username" class="btn btn-custom btn-lg">
+              {% trans "Записатися на сесію" %}
+            </a>
+            <a href="{% url 'app_main:services' %}" class="btn btn-custom btn-lg">
+              {% trans "Дізнатися більше" %}
+            </a>
+          </div>
+
         </div>
       </div>
 
@@ -41,20 +52,10 @@
         <img src="{% static 'images/my-photo-main.jpg' %}" 
              alt="Чаюн Людмила" 
              class="img-fluid rounded photo"
-             style="max-width: 100%; max-height: 400px;">
+             style="height: 500px;">
       </div>
     </div>
     
-    <div class="row ">
-      <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
-        <a href="https://t.me/your_username" class="btn btn-custom btn-lg">
-          {% trans "Записатися на сесію" %}
-        </a>
-        <a href="{% url 'app_main:services' %}" class="btn btn-custom btn-lg">
-          {% trans "Дізнатися більше" %}
-        </a>
-      </div>
-    </div>
   </div>
 </section>
 
