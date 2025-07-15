@@ -425,14 +425,16 @@ footer {
 /* менші картинки для мобільних */
 @media (max-width: 991px) {
   .home-background {
+    /* 
     background-image: url("/static/images/background-main-mobile-2.png");
-
     background-attachment: fixed;
     background-position: top;
-    /*background-position: center;*/    /* Центрувати */
-    background-size: cover;         /* Розтягнути зображення на весь екран */
-    background-repeat: no-repeat;   /* Не повторювати */
-    background-attachment: fixed;   /* Фон не прокручується */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    */
+    background-color: #6BE1EF;
+    background-image: none !important;
   }
   
   .service-background {
