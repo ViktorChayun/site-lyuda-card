@@ -20,5 +20,5 @@ cmd = f"python3 {wgi} migrate"
 os.system(cmd)
 
 # збираємо всі статичні файли
-cmd = f"python {wgi} collectstatic"
+cmd = f"python3 {wgi} collectstatic"
 os.system(cmd)

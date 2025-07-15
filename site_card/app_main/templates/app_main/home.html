@@ -31,8 +31,9 @@
           <h4 class="fw-semibold mt-2">{% trans "Досвід:" %}</h4>
           <p class="fs-6">{% trans "3 роки практичного досвіду, 20+ років самостійної роботи над собою" %}</p>
 
+          <!-- записатися в Telegram -->
           <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
-            <a href="https://t.me/your_username" class="btn btn-custom btn-lg">
+            <a href="https://t.me/{{ contact_telegram }}" class="btn btn-custom btn-lg">
               {% trans "Записатися на сесію" %}
             </a>
             <a href="{% url 'app_main:services' %}" class="btn btn-custom btn-lg">
