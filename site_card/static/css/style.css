@@ -433,7 +433,7 @@ footer {
     background-repeat: no-repeat;
     background-attachment: fixed;
     */
-    background-color: #6BE1EF;
+    background-color: #9FD3E0;
     background-image: none !important;
   }
   
@@ -481,6 +481,17 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.section-faq h2,
+.section-services h2,
+.section-about h2,
+.section-about h3,
+.section-home h3
+{
+  color: #002198; /* темно-синій, читається на світлому і темному */
+}
+
 
 /*для секції з описом послуг*/
 .home-description {
